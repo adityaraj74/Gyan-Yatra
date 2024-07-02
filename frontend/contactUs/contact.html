@@ -54,33 +54,31 @@
 					</form>
 					
 					<script>
-						document.getElementById('contactForm').addEventListener('submit', function(event) {
+						document.getElementById('contactForm').addEventListener('submit', async (event) => {
 							event.preventDefault();
-					
-							const formData = {
-								name: document.getElementById('user_name').value,
-								email: document.getElementById('email').value,
-								contact: document.getElementById('contact').value,
-								message: document.getElementById('message').value,
-							};
-					
-							fetch('http://localhost:5000/contact/add', {
-								method: 'POST',
-								headers: {
-									'Content-Type': 'application/json',
-								},
-								body: JSON.stringify(formData),
-							})
-							.then(response => response.json())
-							.then(data => {
-								console.log('Success:', data);
-								alert('ThankYou For Contacting Us');
-								document.getElementById('contactForm').reset();
-							})
-							.catch((error) => {
+							const name = document.getElementById('user_name').value;
+							const email = document.getElementById('email').value;
+							const contact = document.getElementById('contact').value;
+							const message = document.getElementById('message').value;
+				
+							try {
+								const response = await fetch('http://localhost:5000/contact', {
+									method: 'POST',
+									headers: {
+										'Content-Type': 'application/json',
+									},
+									body: JSON.stringify({ name, email, contact, message }),
+								});
+								const data = await response.json();
+								if (response.ok) {
+									alert('Thank You For Contacting Us');
+									document.getElementById('contactForm').reset();
+								} else {
+									alert(data.message);
+								}
+							} catch (error) {
 								console.error('Error:', error);
-								alert('Error sending message');
-							});
+							}
 						});
 					</script>
 					
