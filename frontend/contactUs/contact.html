@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Contact Page</title>
+		<link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+		<link rel="stylesheet" href="./contact.css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="item">
+				<div class="contact">
+					<div class="first-text">LETS GET IN TOUCH</div>
+					<img src="../images/contact.jpg" alt="" class="image">
+					<div class="social-links">
+						<span class="second-text">connect with us:</span>
+						<ul class="social-media">
+							<li><a href="#"><i class="bx bxl-facebook"></i></a></li>
+
+							<li><a href="#"><i class="bx bxl-twitter"></i></a></li>
+
+							<li><a href="#"><i class="bx bxl-youtube"></i></a></li>
+
+							<li><a href="#"><i class="bx bxl-linkedin"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="submit-form">
+					<h4 class="third-text">Contact us</h4>
+					<form id="contactForm">
+						<div class="input-form">
+							<div class="input-box">
+								<input type="text" name="name" id="user_name" placeholder="" class="input" required>
+								<label for="user_name">Name</label>
+							</div>
+							
+							<div class="input-box">
+								<input type="email" name="email" id="email" placeholder="" class="input" required>
+								<label for="email">Email</label>
+							</div>
+							
+							<div class="input-box">
+								<input type="tel" name="contact" id="contact" placeholder="" class="input" required>
+								<label for="contact">Contact</label>
+							</div>
+							
+							<div class="input-box">
+								<textarea name="message" required id="message" class="input" cols="30" rows="10"></textarea>
+								<label for="message">Message</label>
+							</div>
+							
+							<input type="submit" class="button" value="submit">
+						</div>
+					</form>
+					
+					<script>
+						document.getElementById('contactForm').addEventListener('submit', function(event) {
+							event.preventDefault();
+					
+							const formData = {
+								name: document.getElementById('user_name').value,
+								email: document.getElementById('email').value,
+								contact: document.getElementById('contact').value,
+								message: document.getElementById('message').value,
+							};
+					
+							fetch('http://localhost:5000/contact/add', {
+								method: 'POST',
+								headers: {
+									'Content-Type': 'application/json',
+								},
+								body: JSON.stringify(formData),
+							})
+							.then(response => response.json())
+							.then(data => {
+								console.log('Success:', data);
+								alert('ThankYou For Contacting Us');
+								document.getElementById('contactForm').reset();
+							})
+							.catch((error) => {
+								console.error('Error:', error);
+								alert('Error sending message');
+							});
+						});
+					</script>
+					
+		
+	</body>
+</html>
