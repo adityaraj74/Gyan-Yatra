@@ -80,12 +80,11 @@ Ensure you have the following installed:
 2. Install the dependencies for backend: 
 
    ```bash 
+    cd backend 
 
-   npm init -y 
-
-   cd backend 
-
-   npm install 
+      npm init -y 
+ 
+     npm install 
 
       ``` 
 
