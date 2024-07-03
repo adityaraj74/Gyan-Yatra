@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-require('dotenv').config();
+require('dotenv').config(); // Load environment variables from .env file
 
 const userRoutes = require('./routes/user');
 const contactRoutes = require('./routes/contact');
@@ -16,8 +16,8 @@ app.use(cors());
 app.use('/user', userRoutes);
 app.use('/contact', contactRoutes);
 
-mongoose.connect('mongodb://localhost:27017/learning-platform', {
-    
+mongoose.connect(process.env.MONGODB_URI, {
+   
 });
 
 const connection = mongoose.connection;
