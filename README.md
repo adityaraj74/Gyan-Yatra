@@ -73,18 +73,17 @@ Ensure you have the following installed:
 
    git clone https://github.com/adityaraj74/Gyan-Yatra 
 
-   git clone https://github.com/ajay-gupta/Gyan-Yatra 
+    git clone https://github.com/AbhishekRawat2812/Gyan-Yatra
 
+   git clone https://github.com/ajay11911/Gyan-Yatra
    ``` 
 
 2. Install the dependencies for backend: 
 
-   ```bash 
+   ```bash
     cd backend 
-
-      npm init -y 
- 
-     npm install 
+    npm init -y 
+   npm install 
 
       ``` 
 
@@ -92,11 +91,13 @@ Ensure you have the following installed:
 
    Create a `.env` file in the `server` directory and add your MongoDB URI and JWT secret: 
 
-  ```plaintext
+   ```plaintext
+   
    PORT=5000
    MONGODB_URI=mongodb://localhost:27017/learning-platform
    JWT_SECRET=your_jwt_secret_key
-  ```
+ 
+
 ### Running the Application 
 
 1. Start the backend server: 
@@ -105,6 +106,8 @@ Ensure you have the following installed:
    cd backend 
     npm run dev 
    ``` 
+
+ 
 
 2. Start the frontend development server: 
 
